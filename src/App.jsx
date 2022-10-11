@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import API from "./API";
 import LoginScreen from "./LoginScreen";
 
 function App() {
@@ -122,6 +123,7 @@ function App() {
 				<div class="bar"></div>
 			</div>
 		</header>
+		<API />
 	</>);
 }
 
