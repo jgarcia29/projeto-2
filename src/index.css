@@ -22,6 +22,72 @@ header img {
 	height: 48px;
 }
 
+.opcoes {
+	display: flex;
+	width: 100%;
+	justify-content: space-between;
+	padding: 1em 35em;
+}
+
+.busca {
+	width: 100%;
+	height: 30em;
+	margin: auto;
+}
+
+.campos-busca {
+	width: 450px;
+	margin: auto;
+}
+
+.campos-busca input {
+	width: 300px;
+	height: 30px;
+	font-size: 20px;
+	font-family: NexusSans;
+}
+
+.campos-busca button {
+	width: 100px;
+	height: 30px;
+	font-size: 20px;
+	background-color: #F5F5F5;
+	border: 2px solid #007398;
+	font-family: NexusSans;
+	font-size: 20px;
+	cursor: pointer;
+	margin-left: 50px;
+	font-family: NexusSans;
+}
+
+.campos-busca button:hover {
+	background-color: #007398;
+	color: #F5F5F5;
+}
+
+.imagem-container {
+	width: 100%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.imagem-busca {
+	height: 20em;
+	width: auto;
+	margin: auto;
+	margin-top: 50px;
+}
+
+.erro-busca {
+	position: absolute;
+	width: 450px;
+	color: red;
+	left: calc(50% - 225px);
+	font-size: 20;
+	font-weight: 600;
+}
+
 .user {
 	display: flex;
 	align-items: center;
