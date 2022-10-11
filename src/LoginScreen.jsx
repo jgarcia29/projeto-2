@@ -35,6 +35,8 @@ function LoginScreen(props) {
                             }
                             if (data.token) {
                                 localStorage.setItem("token", data.token)
+                                props.setLoginScreenOn(false)
+                                props.setIsLogged(true)
                             } else {
                                 setError("Token não encontrado")
                             }

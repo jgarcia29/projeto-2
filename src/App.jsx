@@ -1,11 +1,21 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import LoginScreen from "./LoginScreen";
 
 function App() {
 	const token = localStorage.getItem("token");
+	const [user, setUser] = useState({});
 	const [isLogged, setIsLogged] = useState(token ? true : false);
 	const [loginScreenOn, setLoginScreenOn] = useState(false);
-	return isLogged ? (
+	useEffect(() => {
+		if (token) {
+			fetch(`https://reqres.in/api/users/${token.replace('QpwL5tke4Pnpja7X', '')}`,
+				{
+					method: "GET",
+					headers: { "Content-Type": "application/json" },
+				}).then(res => res.json()).then(info => setUser(info.data))
+		}
+	}, [token]);
+	return !isLogged ? (
 		<div className="App">
 			<header>
 				<div class="Div_he1">
@@ -72,7 +82,7 @@ function App() {
 					<div class="bar"></div>
 				</div>
 			</header>
-			{loginScreenOn && <LoginScreen setLoginScreenOn={setLoginScreenOn} />}
+			{loginScreenOn && <LoginScreen setLoginScreenOn={setLoginScreenOn} setIsLogged={setIsLogged} />}
 		</div>
 	) : (<>
 		<header>
@@ -98,42 +108,13 @@ function App() {
 					</g>
 				</svg>
 			</div>
-			<div class="Div_he6">
-				<div class="Div_he2">
-					<div class="Div_he3">
-						<ul class='Ul_he1'>
-							<li class="Li_he1">
-								<a href="https://www.sciencedirect.com/browse/journals-and-books" class="A_he1">
-									<span class="Span">Journals & Books</span>
-								</a>
-								<div class="Underscore">
-								</div>
-							</li>
-						</ul>
-					</div>
-				</div>
-				<div class="Div_he4">
-					<svg class='SVG_he1' role="img" focusable="false" viewBox="0 0 114 128" aria-hidden="true"
-						width="21.375" height="24" aria-label="Help">
-						<path
-							d="m57 8c-14.7 0-28.5 5.72-38.9 16.1-10.38 10.4-16.1 24.22-16.1 38.9 0 30.32 24.68 55 55 55 14.68 0 28.5-5.72 38.88-16.1 10.4-10.4 16.12-24.2 16.12-38.9 0-30.32-24.68-55-55-55zm0 1e1c24.82 0 45 20.18 45 45 0 12.02-4.68 23.32-13.18 31.82s-19.8 13.18-31.82 13.18c-24.82 0-45-20.18-45-45 0-12.02 4.68-23.32 13.18-31.82s19.8-13.18 31.82-13.18zm-0.14 14c-11.55 0.26-16.86 8.43-16.86 18v2h1e1v-2c0-4.22 2.22-9.66 8-9.24 5.5 0.4 6.32 5.14 5.78 8.14-1.1 6.16-11.78 9.5-11.78 20.5v6.6h1e1v-5.56c0-8.16 11.22-11.52 12-21.7 0.74-9.86-5.56-16.52-16-16.74-0.39-0.01-0.76-0.01-1.14 0zm-4.86 5e1v1e1h1e1v-1e1h-1e1z">
-						</path>
-					</svg>
-				</div>
-				<div class="Div_he5">
-					<a href="https://id.elsevier.com/as/authorization.oauth2?platSite=SD%2Fscience&scope=openid%20email%20profile%20els_auth_info%20els_idp_info%20els_idp_analytics_attrs%20els_sa_discover%20urn%3Acom%3Aelsevier%3Aidp%3Apolicy%3Aproduct%3Ainst_assoc&response_type=code&redirect_uri=https%3A%2F%2Fwww.sciencedirect.com%2Fuser%2Fidentity%2Flanding&authType=SINGLE_SIGN_IN&prompt=login&client_id=SDFE-v3&state=retryCounter%3D0%26csrfToken%3Df89a8f73-62ac-44ed-9e42-f5b354bd4221%26idpPolicy%3Durn%253Acom%253Aelsevier%253Aidp%253Apolicy%253Aproduct%253Ainst_assoc%26returnUrl%3Dhttps%253A%252F%252Fwww.sciencedirect.com%252F%26prompt%3Dlogin%26cid%3Datp-c77a28b5-0396-46d7-8a72-e420de3affef&dgcid=user-inst-login"
-						class="A_he2">
-						<span class="Span_he2">
-							Corporate sign in
-						</span>
-					</a>
-					<a href="https://id.elsevier.com/as/authorization.oauth2?platSite=SD%2Fscience&scope=openid%20email%20profile%20els_auth_info%20els_idp_info%20els_idp_analytics_attrs%20els_sa_discover%20urn%3Acom%3Aelsevier%3Aidp%3Apolicy%3Aproduct%3Aindv_identity&response_type=code&redirect_uri=https%3A%2F%2Fwww.sciencedirect.com%2Fuser%2Fidentity%2Flanding&authType=SINGLE_SIGN_IN&prompt=login&client_id=SDFE-v3&state=retryCounter%3D0%26csrfToken%3Df89a8f73-62ac-44ed-9e42-f5b354bd4221%26idpPolicy%3Durn%253Acom%253Aelsevier%253Aidp%253Apolicy%253Aproduct%253Aindv_identity%26returnUrl%3D%252F%26prompt%3Dlogin%26cid%3Datp-621a72ae-d6d0-4e10-8a31-f0b3f4b7773b&els_policy=idp_policy_indv_identity_plus"
-						class="A_he3">
-						<span class="Span_he2">
-							Sign in / register
-						</span>
-					</a>
-				</div>
+			<div className="user">
+				<img src={user.avatar} alt="Foto" />
+				<p>{user.first_name} {user.last_name}</p>
+				<button onClick={() => {
+					setIsLogged(false);
+					localStorage.removeItem("token");
+				}}>Sair</button>
 			</div>
 			<div class="side-menu">
 				<div class="bar"></div>
