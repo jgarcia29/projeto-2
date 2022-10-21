@@ -6,16 +6,16 @@ function API() {
     const [imagemURL, setImagemURL] = useState("");
     const [erro, setErro] = useState("");
     return (<div className="busca">
-        <div className="opcoes"><p>biryani</p> <p>burger</p> <p>butter-chicken</p> <p>dessert</p> <p>dosa</p> <p>idly</p> <p>pasta</p> <p>pizza</p> <p>rice</p> </div>
+        <div className="opcoes"><p>Busque por um personagem usando o nome em inglês... Ex.: Cool Rick ou Evil Morty</p> </div>
         <div className="campos-busca">
-            <input placeholder="Buscar imagem de comida" type="text" value={busca} onChange={(e) => setBusca(e.target.value)} />
+            <input placeholder="Buscar imagem de um personagem de Rick and Morty" type="text" value={busca} onChange={(e) => setBusca(e.target.value)} />
 
             <button type="button" onClick={() => {
                 if (busca.length < 3) {
                     setErro("Digite pelo menos 3 caracteres");
                     return
                 }
-                fetch(`https://foodish-api.herokuapp.com/api/images/${busca}`, {
+                fetch(`https://rickandmortyapi.com/api/character/?name=${busca}`, {
                     method: "GET",
                     headers: {
                         "Content-Type": "application/json"
@@ -25,8 +25,8 @@ function API() {
                         setErro(data.error);
                         return
                     }
-                    if (data.image) {
-                        setImagemURL(data.image)
+                    if (data.results[0].image) {
+                        setImagemURL(data.results[0].image)
                         setErro("")
                         return
                     }
