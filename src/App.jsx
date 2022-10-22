@@ -19,11 +19,11 @@ function App() {
 	return !isLogged ? (
 		<div className="App">
 			<header>
-				<div class="Div_he1">
+				<div className="Div_he1">
 					<img src="https://sdfestaticassets-us-east-1.sciencedirectassets.com/shared-assets/24/images/elsevier-non-solus-new-grey.svg"
 						alt="" />
 					<svg xmlns="http://www.w3.org/2000/svg" version="1.1" height="15" viewBox="0 0 190 23" role="img"
-						class="gh-wordmark u-margin-s-left" aria-labelledby="gh-wm-science-direct" focusable="false"
+						className="gh-wordmark u-margin-s-left" aria-labelledby="gh-wm-science-direct" focusable="false"
 						aria-hidden="true">
 						<title id="gh-wm-science-direct">ScienceDirect</title>
 						<g>
@@ -41,57 +41,57 @@ function App() {
 						</g>
 					</svg>
 				</div>
-				<div class="Div_he6">
-					<div class="Div_he2">
-						<div class="Div_he3">
-							<ul class='Ul_he1'>
-								<li class="Li_he1">
-									<a href="https://www.sciencedirect.com/browse/journals-and-books" class="A_he1">
-										<span class="Span">Journals & Books</span>
+				<div className="Div_he6">
+					<div className="Div_he2">
+						<div className="Div_he3">
+							<ul className='Ul_he1'>
+								<li className="Li_he1">
+									<a href="https://www.sciencedirect.com/browse/journals-and-books" className="A_he1">
+										<span className="Span">Journals & Books</span>
 									</a>
-									<div class="Underscore">
+									<div className="Underscore">
 									</div>
 								</li>
 							</ul>
 						</div>
 					</div>
-					<div class="Div_he4">
-						<svg class='SVG_he1' role="img" focusable="false" viewBox="0 0 114 128" aria-hidden="true"
+					<div className="Div_he4">
+						<svg className='SVG_he1' role="img" focusable="false" viewBox="0 0 114 128" aria-hidden="true"
 							width="21.375" height="24" aria-label="Help">
 							<path
 								d="m57 8c-14.7 0-28.5 5.72-38.9 16.1-10.38 10.4-16.1 24.22-16.1 38.9 0 30.32 24.68 55 55 55 14.68 0 28.5-5.72 38.88-16.1 10.4-10.4 16.12-24.2 16.12-38.9 0-30.32-24.68-55-55-55zm0 1e1c24.82 0 45 20.18 45 45 0 12.02-4.68 23.32-13.18 31.82s-19.8 13.18-31.82 13.18c-24.82 0-45-20.18-45-45 0-12.02 4.68-23.32 13.18-31.82s19.8-13.18 31.82-13.18zm-0.14 14c-11.55 0.26-16.86 8.43-16.86 18v2h1e1v-2c0-4.22 2.22-9.66 8-9.24 5.5 0.4 6.32 5.14 5.78 8.14-1.1 6.16-11.78 9.5-11.78 20.5v6.6h1e1v-5.56c0-8.16 11.22-11.52 12-21.7 0.74-9.86-5.56-16.52-16-16.74-0.39-0.01-0.76-0.01-1.14 0zm-4.86 5e1v1e1h1e1v-1e1h-1e1z">
 							</path>
 						</svg>
 					</div>
-					<div class="Div_he5">
+					<div className="Div_he5">
 						<a href="/"
-							class="A_he2">
-							<span class="Span_he2">
+							className="A_he2">
+							<span className="Span_he2">
 								Corporate sign in
 							</span>
 						</a>
-						<div onClick={() => { setLoginScreenOn(true) }} class="A_he3">
-							<span class="Span_he2">
+						<div onClick={() => { setLoginScreenOn(true) }} className="A_he3">
+							<span className="Span_he2">
 								Sign in / register
 							</span>
 						</div>
 					</div>
 				</div>
-				<div class="side-menu">
-					<div class="bar"></div>
-					<div class="bar"></div>
-					<div class="bar"></div>
+				<div className="side-menu">
+					<div className="bar"></div>
+					<div className="bar"></div>
+					<div className="bar"></div>
 				</div>
 			</header>
 			{loginScreenOn && <LoginScreen setLoginScreenOn={setLoginScreenOn} setIsLogged={setIsLogged} />}
 		</div>
 	) : (<>
 		<header>
-			<div class="Div_he1">
+			<div className="Div_he1">
 				<img src="https://sdfestaticassets-us-east-1.sciencedirectassets.com/shared-assets/24/images/elsevier-non-solus-new-grey.svg"
 					alt="" />
 				<svg xmlns="http://www.w3.org/2000/svg" version="1.1" height="15" viewBox="0 0 190 23" role="img"
-					class="gh-wordmark u-margin-s-left" aria-labelledby="gh-wm-science-direct" focusable="false"
+					className="gh-wordmark u-margin-s-left" aria-labelledby="gh-wm-science-direct" focusable="false"
 					aria-hidden="true">
 					<title id="gh-wm-science-direct">ScienceDirect</title>
 					<g>
@@ -117,10 +117,10 @@ function App() {
 					localStorage.removeItem("token");
 				}}>Sair</button>
 			</div>
-			<div class="side-menu">
-				<div class="bar"></div>
-				<div class="bar"></div>
-				<div class="bar"></div>
+			<div className="side-menu">
+				<div className="bar"></div>
+				<div className="bar"></div>
+				<div className="bar"></div>
 			</div>
 		</header>
 		<API />

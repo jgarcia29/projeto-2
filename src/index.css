@@ -22,6 +22,21 @@ header img {
 	height: 48px;
 }
 
+.sugestoes {
+	background-color: rgba(255, 255, 255, .7);
+	position: absolute;
+	max-height: 100px;
+	width: 300px;
+	overflow-y: auto;
+	font-size: large;
+	font-weight: bolder;
+}
+
+.sugestao:hover {
+	background-color: rgba(0, 0, 0, 0.8);
+	color: white;
+}
+
 .opcoes {
 	display: flex;
 	width: 100%;
@@ -90,6 +105,7 @@ header img {
 	left: calc(50% - 225px);
 	font-size: 20;
 	font-weight: 600;
+	top: 125px;
 }
 
 .user {
