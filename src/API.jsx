@@ -89,7 +89,7 @@ function API() {
             <input placeholder="Buscar imagem de um personagem de Rick and Morty" type="text" value={busca}
                 onFocus={() => { setSearchBarFocus(true) }} onBlur={() => { setSearchBarFocus(false) }} onChange={(e) => setBusca(e.target.value)} />
             <button type="button" onClick={() => buttonHandler()}>Buscar</button>
-            <div className={(busca !== "" && (searchBarFocus || sugestoesFocus)) ? "sugestoes" : ""} onMouseOver={() => { setSugestoesFocus(true) }}>
+            <div className={(busca !== "" && (searchBarFocus || sugestoesFocus)) ? "sugestoes" : ""} onMouseOver={() => { setSugestoesFocus(true) }} onMouseLeave={() => { setSugestoesFocus(false) }}>
                 {(busca !== "" && (searchBarFocus || sugestoesFocus)) && sugestoes.map((sugestao, index) => {
                     if (sugestao.toLowerCase().startsWith(busca.toLowerCase())) {
                         return <div key={index} className="sugestao" onClick={() => {
